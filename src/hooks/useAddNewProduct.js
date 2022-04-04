@@ -11,23 +11,23 @@ function useAddNewProduct() {
         setLoading(true);
         const newRef = await push(ref(db, 'products'))
 
-        // const imageRef = await storageRef(storage, `images/products/${imageFile}`)
-        // const uploadRef = await uploadBytes(imageRef, imageFile)
-        // const imageUrl = await getDownloadURL(imageRef)
+        const imageRef = await storageRef(storage, `images/products/${imageFile.name}`)
+        const uploadRef = await uploadBytes(imageRef, imageFile)
+        const imageUrl = await getDownloadURL(imageRef)
         set (newRef, {...productData})
 
-        // let results = Promise.all([newRef, imageRef, uploadRef, imageUrl])
+        let results = Promise.all([newRef, imageRef, uploadRef, imageUrl])
 
-        // results.then(()=>{
-        //     set(newRef, {
-        //         ...productData,
-        //         imageUrl,
-        //         imageStoragePath:uploadRef.metadata.fullPath,
-        //         uid:newRef.key })
-        // })
-        // .then(()=>{
-        //     setLoading(false)
-        // })
+        results.then(()=>{
+            set(newRef, {
+                ...productData,
+                imageUrl,
+                imageStoragePath:uploadRef.metadata.fullPath,
+                uid:newRef.key })
+        })
+        .then(()=>{
+            setLoading(false)
+        })
         
     }
 

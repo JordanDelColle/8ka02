@@ -34,7 +34,7 @@ function AddProduct ({children, ...props})  {
       productDescription
     }
     setIsWriting(true)
-    productLoader(productData, productImage)
+    productLoader(productData, productImage.file)
   }
   if (isWriting) {
     return <h1>Editor Feedback Component</h1>
