@@ -8,7 +8,7 @@
         const path = acceptedFiles[0] ;
          
         setProductImage(URL.createObjectURL(path))
-      }, [])
+      }, [setProductImage])
       const {
         getRootProps,
         getInputProps,

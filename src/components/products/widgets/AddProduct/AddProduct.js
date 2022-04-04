@@ -10,7 +10,7 @@ function AddProduct ({children, ...props})  {
   const [productName, setProductName] = useState('Product Name')
   const [productPrice, setProductPrice] = useState('230.96')
   const [productDescription, setProductDescription] = useState('Product Description')
-  const [productImage, setProductImage] = useState(ProductPreview)
+  const [productImage, setProductImage] = useState({previewImage:ProductPreview, file:null})
   const [loading, productLoader] = useAddNewProduct();
   const formatter = useNumberFormat()
 
